@@ -1,0 +1,4 @@
+#!/bin/bash
+
+find _yay_ast -type f -name '*.h' -print0 \
+    | xargs -0 -n 1 sed -i "s/Py\([A-Z_]*_H\( \*\/\)\{0,1\}\)$/Yay\1/"
