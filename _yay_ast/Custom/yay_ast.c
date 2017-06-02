@@ -9,7 +9,7 @@
 #include "errcode.h"
 
 
-extern grammar _PyParser_Grammar;
+extern grammar _YayParser_Grammar;
 
 
 // Copied from Python/pythonrun.c
@@ -224,8 +224,8 @@ string_object_to_c_ast(const char *s, PyObject *filename, int start,
     perrdetail err;
     int iflags = PARSER_FLAGS(flags);
 
-    node *n = PyParser_ParseStringObject(s, filename,
-                                         &_PyParser_Grammar, start, &err,
+    node *n = YayParser_ParseStringObject(s, filename,
+                                         &_YayParser_Grammar, start, &err,
                                          &iflags);
     if (flags == NULL) {
         localflags.cf_flags = 0;
@@ -233,8 +233,8 @@ string_object_to_c_ast(const char *s, PyObject *filename, int start,
     }
     if (n) {
         flags->cf_flags |= iflags & PyCF_MASK;
-        mod = PyAST_FromNodeObject(n, flags, filename, arena);
-        PyNode_Free(n);
+        mod = YayAST_FromNodeObject(n, flags, filename, arena);
+        YayNode_Free(n);
     }
     else {
         err_input(&err);
@@ -261,7 +261,7 @@ string_object_to_py_ast(const char *str, PyObject *filename, int start,
         return NULL;
     }
 
-    PyObject *result = PyAST_mod2obj(mod);
+    PyObject *result = YayAST_mod2obj(mod);
     PyArena_Free(arena);
     return result;
 }

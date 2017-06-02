@@ -74,12 +74,12 @@ struct tok_state {
                              NEWLINE token after it. */
 };
 
-extern struct tok_state *PyTokenizer_FromString(const char *, int);
-extern struct tok_state *PyTokenizer_FromUTF8(const char *, int);
-extern struct tok_state *PyTokenizer_FromFile(FILE *, const char*,
+extern struct tok_state *YayTokenizer_FromString(const char *, int);
+extern struct tok_state *YayTokenizer_FromUTF8(const char *, int);
+extern struct tok_state *YayTokenizer_FromFile(FILE *, const char*,
                                               const char *, const char *);
-extern void PyTokenizer_Free(struct tok_state *);
-extern int PyTokenizer_Get(struct tok_state *, char **, char **);
+extern void YayTokenizer_Free(struct tok_state *);
+extern int YayTokenizer_Get(struct tok_state *, char **, char **);
 extern char * PyTokenizer_RestoreEncoding(struct tok_state* tok,
                                           int len, int *offset);
 

@@ -30,11 +30,11 @@ typedef struct {
 #endif
 } parser_state;
 
-parser_state *PyParser_New(grammar *g, int start);
-void PyParser_Delete(parser_state *ps);
-int PyParser_AddToken(parser_state *ps, int type, char *str, int lineno, int col_offset,
+parser_state *YayParser_New(grammar *g, int start);
+void YayParser_Delete(parser_state *ps);
+int YayParser_AddToken(parser_state *ps, int type, char *str, int lineno, int col_offset,
                       int *expected_ret);
-void PyGrammar_AddAccelerators(grammar *g);
+void YayGrammar_AddAccelerators(grammar *g);
 
 #ifdef __cplusplus
 }

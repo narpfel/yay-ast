@@ -16,12 +16,12 @@ typedef struct _node {
     struct _node	*n_child;
 } node;
 
-PyAPI_FUNC(node *) PyNode_New(int type);
-PyAPI_FUNC(int) PyNode_AddChild(node *n, int type,
+PyAPI_FUNC(node *) YayNode_New(int type);
+PyAPI_FUNC(int) YayNode_AddChild(node *n, int type,
                                       char *str, int lineno, int col_offset);
-PyAPI_FUNC(void) PyNode_Free(node *n);
+PyAPI_FUNC(void) YayNode_Free(node *n);
 #ifndef Py_LIMITED_API
-PyAPI_FUNC(Py_ssize_t) _PyNode_SizeOf(node *n);
+PyAPI_FUNC(Py_ssize_t) _YayNode_SizeOf(node *n);
 #endif
 
 /* Node access functions */
