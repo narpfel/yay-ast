@@ -449,70 +449,70 @@ mod_ty _Yay_Expression(expr_ty body, PyArena *arena);
 mod_ty _Yay_Suite(asdl_seq * body, PyArena *arena);
 #define FunctionDef(a0, a1, a2, a3, a4, a5, a6, a7) _Yay_FunctionDef(a0, a1, a2, a3, a4, a5, a6, a7)
 stmt_ty _Yay_FunctionDef(identifier name, arguments_ty args, asdl_seq * body,
-                        asdl_seq * decorator_list, expr_ty returns, int lineno,
-                        int col_offset, PyArena *arena);
+                         asdl_seq * decorator_list, expr_ty returns, int
+                         lineno, int col_offset, PyArena *arena);
 #define AsyncFunctionDef(a0, a1, a2, a3, a4, a5, a6, a7) _Yay_AsyncFunctionDef(a0, a1, a2, a3, a4, a5, a6, a7)
 stmt_ty _Yay_AsyncFunctionDef(identifier name, arguments_ty args, asdl_seq *
-                             body, asdl_seq * decorator_list, expr_ty returns,
-                             int lineno, int col_offset, PyArena *arena);
+                              body, asdl_seq * decorator_list, expr_ty returns,
+                              int lineno, int col_offset, PyArena *arena);
 #define ClassDef(a0, a1, a2, a3, a4, a5, a6, a7) _Yay_ClassDef(a0, a1, a2, a3, a4, a5, a6, a7)
 stmt_ty _Yay_ClassDef(identifier name, asdl_seq * bases, asdl_seq * keywords,
-                     asdl_seq * body, asdl_seq * decorator_list, int lineno,
-                     int col_offset, PyArena *arena);
+                      asdl_seq * body, asdl_seq * decorator_list, int lineno,
+                      int col_offset, PyArena *arena);
 #define Return(a0, a1, a2, a3) _Yay_Return(a0, a1, a2, a3)
 stmt_ty _Yay_Return(expr_ty value, int lineno, int col_offset, PyArena *arena);
 #define Delete(a0, a1, a2, a3) _Yay_Delete(a0, a1, a2, a3)
 stmt_ty _Yay_Delete(asdl_seq * targets, int lineno, int col_offset, PyArena
-                   *arena);
+                    *arena);
 #define Assign(a0, a1, a2, a3, a4) _Yay_Assign(a0, a1, a2, a3, a4)
 stmt_ty _Yay_Assign(asdl_seq * targets, expr_ty value, int lineno, int
-                   col_offset, PyArena *arena);
+                    col_offset, PyArena *arena);
 #define AugAssign(a0, a1, a2, a3, a4, a5) _Yay_AugAssign(a0, a1, a2, a3, a4, a5)
 stmt_ty _Yay_AugAssign(expr_ty target, operator_ty op, expr_ty value, int
-                      lineno, int col_offset, PyArena *arena);
+                       lineno, int col_offset, PyArena *arena);
 #define AnnAssign(a0, a1, a2, a3, a4, a5, a6) _Yay_AnnAssign(a0, a1, a2, a3, a4, a5, a6)
 stmt_ty _Yay_AnnAssign(expr_ty target, expr_ty annotation, expr_ty value, int
-                      simple, int lineno, int col_offset, PyArena *arena);
+                       simple, int lineno, int col_offset, PyArena *arena);
 #define For(a0, a1, a2, a3, a4, a5, a6) _Yay_For(a0, a1, a2, a3, a4, a5, a6)
 stmt_ty _Yay_For(expr_ty target, expr_ty iter, asdl_seq * body, asdl_seq *
-                orelse, int lineno, int col_offset, PyArena *arena);
+                 orelse, int lineno, int col_offset, PyArena *arena);
 #define AsyncFor(a0, a1, a2, a3, a4, a5, a6) _Yay_AsyncFor(a0, a1, a2, a3, a4, a5, a6)
 stmt_ty _Yay_AsyncFor(expr_ty target, expr_ty iter, asdl_seq * body, asdl_seq *
-                     orelse, int lineno, int col_offset, PyArena *arena);
+                      orelse, int lineno, int col_offset, PyArena *arena);
 #define While(a0, a1, a2, a3, a4, a5) _Yay_While(a0, a1, a2, a3, a4, a5)
-stmt_ty _Yay_While(expr_ty test, asdl_seq * body, asdl_seq * orelse, int lineno,
-                  int col_offset, PyArena *arena);
+stmt_ty _Yay_While(expr_ty test, asdl_seq * body, asdl_seq * orelse, int
+                   lineno, int col_offset, PyArena *arena);
 #define If(a0, a1, a2, a3, a4, a5) _Yay_If(a0, a1, a2, a3, a4, a5)
 stmt_ty _Yay_If(expr_ty test, asdl_seq * body, asdl_seq * orelse, int lineno,
-               int col_offset, PyArena *arena);
+                int col_offset, PyArena *arena);
 #define With(a0, a1, a2, a3, a4) _Yay_With(a0, a1, a2, a3, a4)
-stmt_ty _Yay_With(asdl_seq * items, asdl_seq * body, int lineno, int col_offset,
-                 PyArena *arena);
+stmt_ty _Yay_With(asdl_seq * items, asdl_seq * body, int lineno, int
+                  col_offset, PyArena *arena);
 #define AsyncWith(a0, a1, a2, a3, a4) _Yay_AsyncWith(a0, a1, a2, a3, a4)
 stmt_ty _Yay_AsyncWith(asdl_seq * items, asdl_seq * body, int lineno, int
-                      col_offset, PyArena *arena);
+                       col_offset, PyArena *arena);
 #define Raise(a0, a1, a2, a3, a4) _Yay_Raise(a0, a1, a2, a3, a4)
 stmt_ty _Yay_Raise(expr_ty exc, expr_ty cause, int lineno, int col_offset,
-                  PyArena *arena);
+                   PyArena *arena);
 #define Try(a0, a1, a2, a3, a4, a5, a6) _Yay_Try(a0, a1, a2, a3, a4, a5, a6)
 stmt_ty _Yay_Try(asdl_seq * body, asdl_seq * handlers, asdl_seq * orelse,
-                asdl_seq * finalbody, int lineno, int col_offset, PyArena
-                *arena);
+                 asdl_seq * finalbody, int lineno, int col_offset, PyArena
+                 *arena);
 #define Assert(a0, a1, a2, a3, a4) _Yay_Assert(a0, a1, a2, a3, a4)
 stmt_ty _Yay_Assert(expr_ty test, expr_ty msg, int lineno, int col_offset,
-                   PyArena *arena);
+                    PyArena *arena);
 #define Import(a0, a1, a2, a3) _Yay_Import(a0, a1, a2, a3)
 stmt_ty _Yay_Import(asdl_seq * names, int lineno, int col_offset, PyArena
-                   *arena);
+                    *arena);
 #define ImportFrom(a0, a1, a2, a3, a4, a5) _Yay_ImportFrom(a0, a1, a2, a3, a4, a5)
 stmt_ty _Yay_ImportFrom(identifier module, asdl_seq * names, int level, int
-                       lineno, int col_offset, PyArena *arena);
+                        lineno, int col_offset, PyArena *arena);
 #define Global(a0, a1, a2, a3) _Yay_Global(a0, a1, a2, a3)
 stmt_ty _Yay_Global(asdl_seq * names, int lineno, int col_offset, PyArena
-                   *arena);
+                    *arena);
 #define Nonlocal(a0, a1, a2, a3) _Yay_Nonlocal(a0, a1, a2, a3)
 stmt_ty _Yay_Nonlocal(asdl_seq * names, int lineno, int col_offset, PyArena
-                     *arena);
+                      *arena);
 #define Expr(a0, a1, a2, a3) _Yay_Expr(a0, a1, a2, a3)
 stmt_ty _Yay_Expr(expr_ty value, int lineno, int col_offset, PyArena *arena);
 #define Pass(a0, a1, a2) _Yay_Pass(a0, a1, a2)
@@ -522,88 +522,88 @@ stmt_ty _Yay_Break(int lineno, int col_offset, PyArena *arena);
 #define Continue(a0, a1, a2) _Yay_Continue(a0, a1, a2)
 stmt_ty _Yay_Continue(int lineno, int col_offset, PyArena *arena);
 #define BoolOp(a0, a1, a2, a3, a4) _Yay_BoolOp(a0, a1, a2, a3, a4)
-expr_ty _Yay_BoolOp(boolop_ty op, asdl_seq * values, int lineno, int col_offset,
-                   PyArena *arena);
+expr_ty _Yay_BoolOp(boolop_ty op, asdl_seq * values, int lineno, int
+                    col_offset, PyArena *arena);
 #define BinOp(a0, a1, a2, a3, a4, a5) _Yay_BinOp(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_BinOp(expr_ty left, operator_ty op, expr_ty right, int lineno, int
-                  col_offset, PyArena *arena);
+                   col_offset, PyArena *arena);
 #define UnaryOp(a0, a1, a2, a3, a4) _Yay_UnaryOp(a0, a1, a2, a3, a4)
-expr_ty _Yay_UnaryOp(unaryop_ty op, expr_ty operand, int lineno, int col_offset,
-                    PyArena *arena);
+expr_ty _Yay_UnaryOp(unaryop_ty op, expr_ty operand, int lineno, int
+                     col_offset, PyArena *arena);
 #define Lambda(a0, a1, a2, a3, a4) _Yay_Lambda(a0, a1, a2, a3, a4)
-expr_ty _Yay_Lambda(arguments_ty args, expr_ty body, int lineno, int col_offset,
-                   PyArena *arena);
+expr_ty _Yay_Lambda(arguments_ty args, expr_ty body, int lineno, int
+                    col_offset, PyArena *arena);
 #define IfExp(a0, a1, a2, a3, a4, a5) _Yay_IfExp(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_IfExp(expr_ty test, expr_ty body, expr_ty orelse, int lineno, int
-                  col_offset, PyArena *arena);
+                   col_offset, PyArena *arena);
 #define Dict(a0, a1, a2, a3, a4) _Yay_Dict(a0, a1, a2, a3, a4)
 expr_ty _Yay_Dict(asdl_seq * keys, asdl_seq * values, int lineno, int
-                 col_offset, PyArena *arena);
+                  col_offset, PyArena *arena);
 #define Set(a0, a1, a2, a3) _Yay_Set(a0, a1, a2, a3)
 expr_ty _Yay_Set(asdl_seq * elts, int lineno, int col_offset, PyArena *arena);
 #define ListComp(a0, a1, a2, a3, a4) _Yay_ListComp(a0, a1, a2, a3, a4)
 expr_ty _Yay_ListComp(expr_ty elt, asdl_seq * generators, int lineno, int
-                     col_offset, PyArena *arena);
+                      col_offset, PyArena *arena);
 #define SetComp(a0, a1, a2, a3, a4) _Yay_SetComp(a0, a1, a2, a3, a4)
 expr_ty _Yay_SetComp(expr_ty elt, asdl_seq * generators, int lineno, int
-                    col_offset, PyArena *arena);
+                     col_offset, PyArena *arena);
 #define DictComp(a0, a1, a2, a3, a4, a5) _Yay_DictComp(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_DictComp(expr_ty key, expr_ty value, asdl_seq * generators, int
-                     lineno, int col_offset, PyArena *arena);
+                      lineno, int col_offset, PyArena *arena);
 #define GeneratorExp(a0, a1, a2, a3, a4) _Yay_GeneratorExp(a0, a1, a2, a3, a4)
 expr_ty _Yay_GeneratorExp(expr_ty elt, asdl_seq * generators, int lineno, int
-                         col_offset, PyArena *arena);
+                          col_offset, PyArena *arena);
 #define Await(a0, a1, a2, a3) _Yay_Await(a0, a1, a2, a3)
 expr_ty _Yay_Await(expr_ty value, int lineno, int col_offset, PyArena *arena);
 #define Yield(a0, a1, a2, a3) _Yay_Yield(a0, a1, a2, a3)
 expr_ty _Yay_Yield(expr_ty value, int lineno, int col_offset, PyArena *arena);
 #define YieldFrom(a0, a1, a2, a3) _Yay_YieldFrom(a0, a1, a2, a3)
 expr_ty _Yay_YieldFrom(expr_ty value, int lineno, int col_offset, PyArena
-                      *arena);
+                       *arena);
 #define Compare(a0, a1, a2, a3, a4, a5) _Yay_Compare(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_Compare(expr_ty left, asdl_int_seq * ops, asdl_seq * comparators,
-                    int lineno, int col_offset, PyArena *arena);
+                     int lineno, int col_offset, PyArena *arena);
 #define Call(a0, a1, a2, a3, a4, a5) _Yay_Call(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_Call(expr_ty func, asdl_seq * args, asdl_seq * keywords, int
-                 lineno, int col_offset, PyArena *arena);
+                  lineno, int col_offset, PyArena *arena);
 #define Num(a0, a1, a2, a3) _Yay_Num(a0, a1, a2, a3)
 expr_ty _Yay_Num(object n, int lineno, int col_offset, PyArena *arena);
 #define Str(a0, a1, a2, a3) _Yay_Str(a0, a1, a2, a3)
 expr_ty _Yay_Str(string s, int lineno, int col_offset, PyArena *arena);
 #define FormattedValue(a0, a1, a2, a3, a4, a5) _Yay_FormattedValue(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_FormattedValue(expr_ty value, int conversion, expr_ty format_spec,
-                           int lineno, int col_offset, PyArena *arena);
+                            int lineno, int col_offset, PyArena *arena);
 #define JoinedStr(a0, a1, a2, a3) _Yay_JoinedStr(a0, a1, a2, a3)
 expr_ty _Yay_JoinedStr(asdl_seq * values, int lineno, int col_offset, PyArena
-                      *arena);
+                       *arena);
 #define Bytes(a0, a1, a2, a3) _Yay_Bytes(a0, a1, a2, a3)
 expr_ty _Yay_Bytes(bytes s, int lineno, int col_offset, PyArena *arena);
 #define NameConstant(a0, a1, a2, a3) _Yay_NameConstant(a0, a1, a2, a3)
 expr_ty _Yay_NameConstant(singleton value, int lineno, int col_offset, PyArena
-                         *arena);
+                          *arena);
 #define Ellipsis(a0, a1, a2) _Yay_Ellipsis(a0, a1, a2)
 expr_ty _Yay_Ellipsis(int lineno, int col_offset, PyArena *arena);
 #define Constant(a0, a1, a2, a3) _Yay_Constant(a0, a1, a2, a3)
 expr_ty _Yay_Constant(constant value, int lineno, int col_offset, PyArena
-                     *arena);
+                      *arena);
 #define Attribute(a0, a1, a2, a3, a4, a5) _Yay_Attribute(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_Attribute(expr_ty value, identifier attr, expr_context_ty ctx, int
-                      lineno, int col_offset, PyArena *arena);
+                       lineno, int col_offset, PyArena *arena);
 #define Subscript(a0, a1, a2, a3, a4, a5) _Yay_Subscript(a0, a1, a2, a3, a4, a5)
 expr_ty _Yay_Subscript(expr_ty value, slice_ty slice, expr_context_ty ctx, int
-                      lineno, int col_offset, PyArena *arena);
+                       lineno, int col_offset, PyArena *arena);
 #define Starred(a0, a1, a2, a3, a4) _Yay_Starred(a0, a1, a2, a3, a4)
 expr_ty _Yay_Starred(expr_ty value, expr_context_ty ctx, int lineno, int
-                    col_offset, PyArena *arena);
+                     col_offset, PyArena *arena);
 #define Name(a0, a1, a2, a3, a4) _Yay_Name(a0, a1, a2, a3, a4)
 expr_ty _Yay_Name(identifier id, expr_context_ty ctx, int lineno, int
-                 col_offset, PyArena *arena);
+                  col_offset, PyArena *arena);
 #define List(a0, a1, a2, a3, a4) _Yay_List(a0, a1, a2, a3, a4)
 expr_ty _Yay_List(asdl_seq * elts, expr_context_ty ctx, int lineno, int
-                 col_offset, PyArena *arena);
+                  col_offset, PyArena *arena);
 #define Tuple(a0, a1, a2, a3, a4) _Yay_Tuple(a0, a1, a2, a3, a4)
 expr_ty _Yay_Tuple(asdl_seq * elts, expr_context_ty ctx, int lineno, int
-                  col_offset, PyArena *arena);
+                   col_offset, PyArena *arena);
 #define Slice(a0, a1, a2, a3) _Yay_Slice(a0, a1, a2, a3)
 slice_ty _Yay_Slice(expr_ty lower, expr_ty upper, expr_ty step, PyArena *arena);
 #define ExtSlice(a0, a1) _Yay_ExtSlice(a0, a1)
@@ -612,25 +612,25 @@ slice_ty _Yay_ExtSlice(asdl_seq * dims, PyArena *arena);
 slice_ty _Yay_Index(expr_ty value, PyArena *arena);
 #define comprehension(a0, a1, a2, a3, a4) _Yay_comprehension(a0, a1, a2, a3, a4)
 comprehension_ty _Yay_comprehension(expr_ty target, expr_ty iter, asdl_seq *
-                                   ifs, int is_async, PyArena *arena);
+                                    ifs, int is_async, PyArena *arena);
 #define ExceptHandler(a0, a1, a2, a3, a4, a5) _Yay_ExceptHandler(a0, a1, a2, a3, a4, a5)
 excepthandler_ty _Yay_ExceptHandler(expr_ty type, identifier name, asdl_seq *
-                                   body, int lineno, int col_offset, PyArena
-                                   *arena);
+                                    body, int lineno, int col_offset, PyArena
+                                    *arena);
 #define arguments(a0, a1, a2, a3, a4, a5, a6) _Yay_arguments(a0, a1, a2, a3, a4, a5, a6)
 arguments_ty _Yay_arguments(asdl_seq * args, arg_ty vararg, asdl_seq *
-                           kwonlyargs, asdl_seq * kw_defaults, arg_ty kwarg,
-                           asdl_seq * defaults, PyArena *arena);
+                            kwonlyargs, asdl_seq * kw_defaults, arg_ty kwarg,
+                            asdl_seq * defaults, PyArena *arena);
 #define arg(a0, a1, a2, a3, a4) _Yay_arg(a0, a1, a2, a3, a4)
 arg_ty _Yay_arg(identifier arg, expr_ty annotation, int lineno, int col_offset,
-               PyArena *arena);
+                PyArena *arena);
 #define keyword(a0, a1, a2) _Yay_keyword(a0, a1, a2)
 keyword_ty _Yay_keyword(identifier arg, expr_ty value, PyArena *arena);
 #define alias(a0, a1, a2) _Yay_alias(a0, a1, a2)
 alias_ty _Yay_alias(identifier name, identifier asname, PyArena *arena);
 #define withitem(a0, a1, a2) _Yay_withitem(a0, a1, a2)
 withitem_ty _Yay_withitem(expr_ty context_expr, expr_ty optional_vars, PyArena
-                         *arena);
+                          *arena);
 
 PyObject* YayAST_mod2obj(mod_ty t);
 mod_ty YayAST_obj2mod(PyObject* ast, PyArena* arena, int mode);
