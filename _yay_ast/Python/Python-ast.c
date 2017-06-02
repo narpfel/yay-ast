@@ -670,7 +670,7 @@ static PyTypeObject* make_type(char *type, PyTypeObject* base, char**fields, int
         PyTuple_SET_ITEM(fnames, i, field);
     }
     result = PyObject_CallFunction((PyObject*)&PyType_Type, "s(O){sOss}",
-                    type, base, "_fields", fnames, "__module__", "_ast");
+                    type, base, "_fields", fnames, "__module__", "_yay_ast");
     Py_DECREF(fnames);
     return (PyTypeObject*)result;
 }
@@ -7841,10 +7841,10 @@ failed:
 
 
 static struct PyModuleDef _astmodule = {
-  PyModuleDef_HEAD_INIT, "_ast"
+  PyModuleDef_HEAD_INIT, "_yay_ast"
 };
 PyMODINIT_FUNC
-PyInit__ast(void)
+PyInit__yay_ast(void)
 {
     PyObject *m, *d;
     if (!init_types()) return NULL;
@@ -8093,5 +8093,3 @@ int PyAST_Check(PyObject* obj)
         return -1;
     return PyObject_IsInstance(obj, (PyObject*)&AST_type);
 }
-
-
