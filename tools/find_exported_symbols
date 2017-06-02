@@ -1,0 +1,9 @@
+#!/bin/bash
+
+objdump -t build/lib*/_yay_ast.*.so \
+    | grep ' g ' \
+    | grep -v UND \
+    | tee exported_symbols_full.txt \
+    | awk '{ if (index($6, "Py") > 0) { print $6 } }' \
+    | grep -v PyInit__yay_ast \
+    > "exported_symbols.txt"

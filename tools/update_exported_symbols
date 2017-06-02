@@ -1,0 +1,10 @@
+#!/bin/bash
+
+while read change; do
+  if [[ ${change:0:1} == "_" ]] ; then
+    new="_Yay${change:3}"
+  else
+    new="Yay${change:2}"
+  fi
+  find _yay_ast -type f -name '*.h' -print0 -o -name '*.c' -print0 | xargs -0 -n 1 sed -i "s/$change/$new/"
+done < exported_symbols.txt
