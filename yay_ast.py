@@ -24,7 +24,11 @@
     :copyright: Copyright 2008 by Armin Ronacher.
     :license: Python License.
 """
-from _ast import *
+
+from collections.abc import Iterable
+
+import _yay_ast
+from _yay_ast import *
 
 
 def parse(source, filename='<unknown>', mode='exec'):
@@ -32,7 +36,7 @@ def parse(source, filename='<unknown>', mode='exec'):
     Parse the source into an AST node.
     Equivalent to compile(source, filename, mode, PyCF_ONLY_AST).
     """
-    return compile(source, filename, mode, PyCF_ONLY_AST)
+    return _yay_ast._parse(source, filename, mode)
 
 
 _NUM_TYPES = (int, float, complex)
