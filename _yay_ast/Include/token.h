@@ -1,8 +1,8 @@
 
 /* Token types */
 #ifndef Py_LIMITED_API
-#ifndef Py_TOKEN_H
-#define Py_TOKEN_H
+#ifndef Yay_TOKEN_H
+#define Yay_TOKEN_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -86,5 +86,5 @@ PyAPI_FUNC(int) YayToken_ThreeChars(int, int, int);
 #ifdef __cplusplus
 }
 #endif
-#endif /* !Py_TOKEN_H */
+#endif /* !Yay_TOKEN_H */
 #endif /* Py_LIMITED_API */

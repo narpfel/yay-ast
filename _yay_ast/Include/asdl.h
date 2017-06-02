@@ -1,5 +1,5 @@
-#ifndef Py_ASDL_H
-#define Py_ASDL_H
+#ifndef Yay_ASDL_H
+#define Yay_ASDL_H
 
 typedef PyObject * identifier;
 typedef PyObject * string;
@@ -43,4 +43,4 @@ asdl_int_seq *_Yay_asdl_int_seq_new(Py_ssize_t size, PyArena *arena);
 #define asdl_seq_SET(S, I, V) (S)->elements[I] = (V)
 #endif
 
-#endif /* !Py_ASDL_H */
+#endif /* !Yay_ASDL_H */

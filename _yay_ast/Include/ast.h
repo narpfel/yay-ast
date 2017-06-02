@@ -1,5 +1,5 @@
-#ifndef Py_AST_H
-#define Py_AST_H
+#ifndef Yay_AST_H
+#define Yay_AST_H
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -19,4 +19,4 @@ PyAPI_FUNC(mod_ty) YayAST_FromNodeObject(
 #ifdef __cplusplus
 }
 #endif
-#endif /* !Py_AST_H */
+#endif /* !Yay_AST_H */
