@@ -7,6 +7,7 @@ _yay_ast = Extension(
     "_yay_ast",
     include_dirs=["_yay_ast/Include"],
     sources=[
+        "_yay_ast/Custom/yay_ast.c",
         "_yay_ast/Parser/acceler.c",
         "_yay_ast/Parser/bitset.c",
         "_yay_ast/Parser/grammar.c",
