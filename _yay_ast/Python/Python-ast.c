@@ -7840,8 +7840,15 @@ failed:
 }
 
 
+PyObject *yay_ast_parse(PyObject *module, PyObject *args);
+
+static PyMethodDef yay_ast_methods[] = {
+    {"_parse", yay_ast_parse, METH_VARARGS, "Parse the source into an AST node."},
+    {NULL, NULL, 0, NULL},
+};
+
 static struct PyModuleDef _astmodule = {
-  PyModuleDef_HEAD_INIT, "_yay_ast"
+  PyModuleDef_HEAD_INIT, "_yay_ast", NULL, 0, yay_ast_methods,
 };
 PyMODINIT_FUNC
 PyInit__yay_ast(void)
