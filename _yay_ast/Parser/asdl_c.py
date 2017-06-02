@@ -269,9 +269,9 @@ class PrototypeVisitor(EmitVisitor):
         margs = "a0"
         for i in range(1, len(args)+1):
             margs += ", a%d" % i
-        self.emit("#define %s(%s) _Py_%s(%s)" % (name, margs, name, margs), 0,
+        self.emit("#define %s(%s) _Yay_%s(%s)" % (name, margs, name, margs), 0,
                 reflow=False)
-        self.emit("%s _Py_%s(%s);" % (ctype, name, argstr), False)
+        self.emit("%s _Yay_%s(%s);" % (ctype, name, argstr), False)
 
     def visitProduct(self, prod, name):
         self.emit_function(name, get_c_type(name),
@@ -517,9 +517,9 @@ class Obj2ModVisitor(PickleVisitor):
             self.emit("}", depth+1)
             self.emit("len = PyList_GET_SIZE(tmp);", depth+1)
             if self.isSimpleType(field):
-                self.emit("%s = _Py_asdl_int_seq_new(len, arena);" % field.name, depth+1)
+                self.emit("%s = _Yay_asdl_int_seq_new(len, arena);" % field.name, depth+1)
             else:
-                self.emit("%s = _Py_asdl_seq_new(len, arena);" % field.name, depth+1)
+                self.emit("%s = _Yay_asdl_seq_new(len, arena);" % field.name, depth+1)
             self.emit("if (%s == NULL) goto failed;" % field.name, depth+1)
             self.emit("for (i = 0; i < len; i++) {", depth+1)
             self.emit("%s value;" % ctype, depth+2)
@@ -788,7 +788,7 @@ static PyTypeObject* make_type(char *type, PyTypeObject* base, char**fields, int
         PyTuple_SET_ITEM(fnames, i, field);
     }
     result = PyObject_CallFunction((PyObject*)&PyType_Type, "s(O){sOss}",
-                    type, base, "_fields", fnames, "__module__", "_ast");
+                    type, base, "_fields", fnames, "__module__", "_yay_ast");
     Py_DECREF(fnames);
     return (PyTypeObject*)result;
 }
@@ -1021,11 +1021,18 @@ static int exists_not_none(PyObject *obj, _Py_Identifier *id)
 class ASTModuleVisitor(PickleVisitor):
 
     def visitModule(self, mod):
+        self.emit("PyObject *yay_ast_parse(PyObject *module, PyObject *args);", 0)
+        self.emit("", 0)
+        self.emit("static PyMethodDef yay_ast_methods[] = {", 0)
+        self.emit('{"_parse", yay_ast_parse, METH_VARARGS, "Parse the source into an AST node."},', 1, False)
+        self.emit("{NULL, NULL, 0, NULL},", 1)
+        self.emit("};", 0)
+        self.emit("", 0)
         self.emit("static struct PyModuleDef _astmodule = {", 0)
-        self.emit('  PyModuleDef_HEAD_INIT, "_ast"', 0)
+        self.emit('  PyModuleDef_HEAD_INIT, "_yay_ast", NULL, 0, yay_ast_methods,', 0)
         self.emit("};", 0)
         self.emit("PyMODINIT_FUNC", 0)
-        self.emit("PyInit__ast(void)", 0)
+        self.emit("PyInit__yay_ast(void)", 0)
         self.emit("{", 0)
         self.emit("PyObject *m, *d;", 1)
         self.emit("if (!init_types()) return NULL;", 1)
@@ -1211,7 +1218,7 @@ class ObjVisitor(PickleVisitor):
 class PartingShots(StaticVisitor):
 
     CODE = """
-PyObject* PyAST_mod2obj(mod_ty t)
+PyObject* YayAST_mod2obj(mod_ty t)
 {
     if (!init_types())
         return NULL;
@@ -1219,7 +1226,7 @@ PyObject* PyAST_mod2obj(mod_ty t)
 }
 
 /* mode is 0 for "exec", 1 for "eval" and 2 for "single" input */
-mod_ty PyAST_obj2mod(PyObject* ast, PyArena* arena, int mode)
+mod_ty YayAST_obj2mod(PyObject* ast, PyArena* arena, int mode)
 {
     mod_ty res;
     PyObject *req_type[3];
@@ -1249,7 +1256,7 @@ mod_ty PyAST_obj2mod(PyObject* ast, PyArena* arena, int mode)
         return res;
 }
 
-int PyAST_Check(PyObject* obj)
+int YayAST_Check(PyObject* obj)
 {
     if (!init_types())
         return -1;
@@ -1289,9 +1296,9 @@ def main(srcfile, dump_module=False):
                             PrototypeVisitor(f),
                             )
         c.visit(mod)
-        f.write("PyObject* PyAST_mod2obj(mod_ty t);\n")
-        f.write("mod_ty PyAST_obj2mod(PyObject* ast, PyArena* arena, int mode);\n")
-        f.write("int PyAST_Check(PyObject* obj);\n")
+        f.write("PyObject* YayAST_mod2obj(mod_ty t);\n")
+        f.write("mod_ty YayAST_obj2mod(PyObject* ast, PyArena* arena, int mode);\n")
+        f.write("int YayAST_Check(PyObject* obj);\n")
         f.close()
 
     if SRC_DIR:
