@@ -312,7 +312,7 @@ class NodeTransformer(NodeVisitor):
                         value = self.visit(value)
                         if value is None:
                             continue
-                        elif not isinstance(value, AST):
+                        elif isinstance(value, Iterable):
                             new_values.extend(value)
                             continue
                     new_values.append(value)
