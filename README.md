@@ -62,29 +62,29 @@ Initial setup
    ```
 1. Create `setup.py` file.
 1. Make sure it compiles: `python setup.py build`.
-1. Commit (ef46bd949ff9cb73406369cb7cdeaaecf9f5facf)
+1. [Commit](https://github.com/narpfel/yay-ast/commit/ef46bd949ff9cb73406369cb7cdeaaecf9f5facf).
 1. Rename `_ast` to `_yay_ast` in `_yay_ast/Python/Python-ast.c`.
-1. Commit (163f16e37ce4bb0ecd017d812eb6d9cbc57b1220).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/163f16e37ce4bb0ecd017d812eb6d9cbc57b1220).
 1. Assemble `_yay_ast/Custom/yay_ast.c` (for `_yay_ast._parse` to be used instead
    of `__builtins__.compile` in `yay_ast.parse`.) and add to `setup.py`.
-1. Commit (a5716aeb9f4d2d9316b9d2737707e6cbc20037ee).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/a5716aeb9f4d2d9316b9d2737707e6cbc20037ee).
 1. Add `yay_ast_parse` from `Custom/yay_ast.c` to `_yay_ast` module.
-1. Commit (3eae9f472c2c95c699ff27ba7a208da192e5721f).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/3eae9f472c2c95c699ff27ba7a208da192e5721f).
 1. Compile: `python setup.py build`.
 1. Rename exported symbol names to avoid collisions with the original CPython parser.
    1. `tools/find_exported_symbols`
    1. `tools/update_exported_symbols`
    1. (TODO: Use `clang-rename` or something similar instead of the hacked `sed` & `grep` scripts.)
 1. Compile again.
-1. Commit (69f3aa79aec655024b57187a93291980c4b54a8f).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/69f3aa79aec655024b57187a93291980c4b54a8f).
 1. Modify `yay_ast.parse` to not use `__builtins__.compile`.
-1. Commit (f23368fb09a5d57a37ff67e111e57f2211626a68).
+1. [Commit](f23368fb09a5d57a37ff67e111e57f2211626a68).
 1. Adapt `Parser/asdl_c.py` to emit `Yay` prefix.
-1. Commit (38c2171dacd04c8910c10783e95a668ef231033a).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/38c2171dacd04c8910c10783e95a668ef231033a).
 1. Update include header guards (`tools/update_include_guards`)
    * The complete `#ifndef Py_LIMITED_API` block in `_yay_ast/Include/compile.h`
      has to be removed.
-1. Commit (0419bc444e3402deb603091cc16e04f74b838e18).
+1. [Commit](https://github.com/narpfel/yay-ast/commit/0419bc444e3402deb603091cc16e04f74b838e18).
 1. Now new features can be added to the grammar. Follow the
    [CPython devguide](https://docs.python.org/devguide/grammar.html).
    1. Update `Grammar/Grammar` file.
@@ -94,7 +94,7 @@ Initial setup
    1. Update `Python/ast.c` to emit new AST nodes.
    1. Run `tools/make_grammar` and `tools/make_python-ast` to regenerate
       `graminit.{h,c}` and the `_yay_ast` module (`Python/Python-ast.c`).
-   1. Commit (c048cc936b926b8997ceefe5c8a26212e6bc488e).
+   1. [Commit](https://github.com/narpfel/yay-ast/commit/c048cc936b926b8997ceefe5c8a26212e6bc488e).
 
 
 
