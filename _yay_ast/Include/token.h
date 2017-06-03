@@ -68,6 +68,7 @@ extern "C" {
 #define ASYNC		55
 #define ERRORTOKEN	56
 #define N_TOKENS	57
+#define ARROW       58
 
 /* Special definitions for cooperation with parser */
 

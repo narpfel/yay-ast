@@ -106,7 +106,8 @@ const char *_YayParser_TokenNames[] = {
     "AWAIT",
     "ASYNC",
     "<ERRORTOKEN>",
-    "<N_TOKENS>"
+    "<N_TOKENS>",
+    "ARROW"
 };
 
 
@@ -1165,6 +1166,7 @@ YayToken_TwoChars(int c1, int c2)
         case '>':               return NOTEQUAL;
         case '=':               return LESSEQUAL;
         case '<':               return LEFTSHIFT;
+        case '-':               return ARROW;
         }
         break;
     case '>':

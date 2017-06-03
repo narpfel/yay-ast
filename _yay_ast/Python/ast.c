@@ -3019,6 +3019,39 @@ ast_for_expr_stmt(struct compiling *c, const node *n)
                              LINENO(n), n->n_col_offset, c->c_arena);
         }
     }
+    else if (TYPE(CHILD(n, 1)) == ARROW) {
+        int i;
+        asdl_seq *targets;
+        node *value;
+        expr_ty expression;
+
+        /* an arrow-assignment */
+        targets = _Yay_asdl_seq_new(NCH(n) / 2, c->c_arena);
+        if (!targets)
+            return NULL;
+        for (i = 0; i < NCH(n) - 2; i += 2) {
+            expr_ty e;
+            node *ch = CHILD(n, i);
+            if (TYPE(ch) == yield_expr) {
+                ast_error(c, ch, "arrow-assignment to yield expression not possible");
+                return NULL;
+            }
+            e = ast_for_testlist(c, ch);
+            if (!e)
+              return NULL;
+
+            asdl_seq_SET(targets, i / 2, e);
+        }
+        value = CHILD(n, NCH(n) - 1);
+        if (TYPE(value) == testlist_star_expr)
+            expression = ast_for_testlist(c, value);
+        else
+            expression = ast_for_expr(c, value);
+        if (!expression)
+            return NULL;
+
+        return ArrowAssign(targets, expression, LINENO(n), n->n_col_offset, c->c_arena);
+    }
     else {
         int i;
         asdl_seq *targets;
