@@ -47,3 +47,5 @@ docs/_build
 OLD/
 
 _yay_ast/pgen
+exported_symbols_full.txt
+exported_symbols.txt
