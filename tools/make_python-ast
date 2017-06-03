@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd _yay_ast
+
+python Parser/asdl_c.py -c Python Parser/Python.asdl
+python Parser/asdl_c.py -h Include Parser/Python.asdl
