@@ -35,7 +35,10 @@ _yay_ast = Extension(
         "_yay_ast/Include/token.h",
         "_yay_ast/Parser/parser.h",
         "_yay_ast/Parser/tokenizer.h",
-    ]
+    ],
+    extra_compile_args=[
+        "-std=c99",
+    ],
 )
 
 
