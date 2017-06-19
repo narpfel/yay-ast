@@ -416,12 +416,13 @@ static PyTypeObject *BitAnd_type;
 static PyTypeObject *FloorDiv_type;
 static PyTypeObject *unaryop_type;
 static PyObject *Invert_singleton, *Not_singleton, *UAdd_singleton,
-*USub_singleton;
+*USub_singleton, *Deref_singleton;
 static PyObject* ast2obj_unaryop(unaryop_ty);
 static PyTypeObject *Invert_type;
 static PyTypeObject *Not_type;
 static PyTypeObject *UAdd_type;
 static PyTypeObject *USub_type;
+static PyTypeObject *Deref_type;
 static PyTypeObject *cmpop_type;
 static PyObject *Eq_singleton, *NotEq_singleton, *Lt_singleton, *LtE_singleton,
 *Gt_singleton, *GtE_singleton, *Is_singleton, *IsNot_singleton, *In_singleton,
@@ -1114,6 +1115,10 @@ static int init_types(void)
     if (!USub_type) return 0;
     USub_singleton = PyType_GenericNew(USub_type, NULL, NULL);
     if (!USub_singleton) return 0;
+    Deref_type = make_type("Deref", unaryop_type, NULL, 0);
+    if (!Deref_type) return 0;
+    Deref_singleton = PyType_GenericNew(Deref_type, NULL, NULL);
+    if (!Deref_singleton) return 0;
     cmpop_type = make_type("cmpop", &AST_type, NULL, 0);
     if (!cmpop_type) return 0;
     if (!add_attributes(cmpop_type, NULL, 0)) return 0;
@@ -3697,6 +3702,9 @@ PyObject* ast2obj_unaryop(unaryop_ty o)
         case USub:
             Py_INCREF(USub_singleton);
             return USub_singleton;
+        case Deref:
+            Py_INCREF(Deref_singleton);
+            return Deref_singleton;
         default:
             /* should never happen, but just in case ... */
             PyErr_Format(PyExc_SystemError, "unknown unaryop found");
@@ -7343,6 +7351,14 @@ obj2ast_unaryop(PyObject* obj, unaryop_ty* out, PyArena* arena)
         *out = USub;
         return 0;
     }
+    isinstance = PyObject_IsInstance(obj, (PyObject *)Deref_type);
+    if (isinstance == -1) {
+        return 1;
+    }
+    if (isinstance) {
+        *out = Deref;
+        return 0;
+    }
 
     PyErr_Format(PyExc_TypeError, "expected some sort of unaryop, but got %R", obj);
     return 1;
@@ -8118,6 +8134,8 @@ PyInit__yay_ast(void)
     if (PyDict_SetItemString(d, "Not", (PyObject*)Not_type) < 0) return NULL;
     if (PyDict_SetItemString(d, "UAdd", (PyObject*)UAdd_type) < 0) return NULL;
     if (PyDict_SetItemString(d, "USub", (PyObject*)USub_type) < 0) return NULL;
+    if (PyDict_SetItemString(d, "Deref", (PyObject*)Deref_type) < 0) return
+        NULL;
     if (PyDict_SetItemString(d, "cmpop", (PyObject*)cmpop_type) < 0) return
         NULL;
     if (PyDict_SetItemString(d, "Eq", (PyObject*)Eq_type) < 0) return NULL;

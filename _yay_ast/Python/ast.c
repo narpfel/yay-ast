@@ -2600,7 +2600,8 @@ ast_for_expr(struct compiling *c, const node *n)
                 if (!expression)
                     return NULL;
 
-                return UnaryOp(Not, expression, LINENO(n), n->n_col_offset,
+                unaryop_ty op = TYPE(CHILD(n, 0)) == CIRCUMFLEX ? Deref : Not;
+                return UnaryOp(op, expression, LINENO(n), n->n_col_offset,
                                c->c_arena);
             }
         case comparison:
